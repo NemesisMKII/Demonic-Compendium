@@ -73,14 +73,14 @@ const DemonDetails = () => {
                     </div>
                     <div id="demonCondition">
                         <div id="demonHp">
-                            <p>HP</p>
-                            <p>{demon.stats.hp} / {demon.stats.hp}</p>
-                            <div className="bar"></div>
+                            <p className="text-green">HP</p>
+                            <p className="text-green">{demon.stats.hp} / {demon.stats.hp}</p>
+                            <div className="bar bg-green"></div>
                         </div>
                         <div id="demonMp">
-                            <p>MP</p>
-                            <p>{demon.stats.mp} / {demon.stats.mp}</p>
-                            <div className="bar"></div>
+                            <p className="text-yellow">MP</p>
+                            <p className="text-green">{demon.stats.mp} / {demon.stats.mp}</p>
+                            <div className="bar bg-yellow"></div>
                         </div>
                     </div>
                     <div id="demonResistances">

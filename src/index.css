@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   transition: background 0.5s;
@@ -171,22 +175,6 @@ main {
   border: 1px solid black;
   height: 20px;
   border-radius: 5%;
-}
-
-#demonHp, #demonMp {
-  color: rgb(141, 247, 17);
-}
-
-#demonMp p:first-child {
-  color: rgb(255, 215, 55)
-}
-
-#demonHp .bar {
-  background-color: rgb(141, 247, 17);
-}
-
-#demonMp .bar {
-  background-color: rgb(255, 215, 55);
 }
 
 #demonResistances > div {

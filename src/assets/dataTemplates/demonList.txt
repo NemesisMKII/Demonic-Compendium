@@ -1,0 +1,36 @@
+[
+    "gameName": {
+        [
+            {
+                type: string,
+                name: string,
+                level: int,
+                stats: {
+                    hp: int,
+                    mp: int,
+                    str: int,
+                    vit: int,
+                    mag: int,
+                    agi: int,
+                    Lu: int,
+                },
+                resistances: {
+                    physical: string,
+                    fire: string,
+                    ice: string,
+                    thunder: string,
+                    wind: string,
+                    holy: string,
+                    dark: string,
+                },
+                skills: [
+                    {
+                        skillName: string,
+                        skillCost: int,
+                        skillLevel: int = null
+                    }
+                ],
+            }
+        ]
+    },
+]

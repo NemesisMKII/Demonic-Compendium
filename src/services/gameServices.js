@@ -26,11 +26,7 @@ export function setGameBG(gameName) {
 }
 
 export function getCurrentGame() {
-    if (sessionStorage.getItem('DemonicCompendiumCurrentGame')) {
-        return JSON.parse(sessionStorage.getItem('DemonicCompendiumCurrentGame'));
-    } else {
-        return games[0].slug;
-    }
+    return window.location.pathname.split("/")[1]
 }
 
 export function setActiveGameTab(game) {

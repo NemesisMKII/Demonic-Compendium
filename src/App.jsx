@@ -7,6 +7,7 @@ import { getCurrentGame, setActiveGameTab, setGameBG } from "./services/gameServ
 import { useEffect } from "react";
 import DemonListView from "./views/DemonListView";
 import DemonDetailsView from "./views/DemonDetailsView";
+import DemonAddView from "./views/DemonAddView";
 
 export default function App() {
     const [currentGame, setCurrentGame] = useState(getCurrentGame);
@@ -17,13 +18,13 @@ export default function App() {
 
 
     return (
-        <div className="App">
+        <div className="App text-white h-full">
             <Header onGameChange={(value) => {setCurrentGame(value)}} />
-            <hr />
-            <main>
+            <main className="h-[88%] flex">
                 <Routes>
                     <Route path={URL.gameHome} element={<DemonListView game={currentGame} />} />
                     <Route path={URL.demonDetails} element={<DemonDetailsView />} />
+                    <Route path={URL.addDemon} element={<DemonAddView />} />
                 </Routes>
             </main>
         </div>

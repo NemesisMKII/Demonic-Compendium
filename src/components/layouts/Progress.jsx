@@ -1,9 +1,10 @@
 import React from "react";
 
 export const Progress = (props) => {
+    const progressWidth = props.stat ?? 0;
     return (
-        <div className="w-75 h-100 border-1 bg-white">
-            <div className={`w-[${props.stat}] h-100 bg-white`}></div>
+        <div className="w-2/4 h-3 border-1 border-black bg-white">
+            <div className={`w-[${progressWidth}%] h-full bg-black`}></div>
         </div>
     )
 }

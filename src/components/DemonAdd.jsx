@@ -1,86 +1,29 @@
-import React, { useState } from "react";
-import { getDemon, getDemonNameByURL } from "../services/demonServices";
-import { getCurrentGame } from "../services/gameServices";
+import React from "react";
 import unknownDemon from "../assets/demons/unknown_demon.png";
-import phys from "../assets/icons/elements/physical.png";
-import fire from "../assets/icons/elements/fire.png";
-import ice from "../assets/icons/elements/ice.png";
-import thunder from "../assets/icons/elements/thunder.png";
-import force from "../assets/icons/elements/force.png";
-import light from "../assets/icons/elements/light.png";
-import dark from "../assets/icons/elements/dark.png";
-import absorb from "../assets/icons/resistances/absorb.png";
-import neutral from "../assets/icons/resistances/neutral.png";
-import nullRes from "../assets/icons/resistances/null.png";
-import repel from "../assets/icons/resistances/repel.png";
-import res from "../assets/icons/resistances/resistance.png";
-import weak from "../assets/icons/resistances/weak.png";
-import { Progress } from "./layouts/Progress";
 
-const DemonDetails = () => {
-    var demon = getDemon(getDemonNameByURL(), getCurrentGame());
-    const [isModifying, setIsModifying] = useState(false)
-    const elements = {
-        phys: phys,
-        fire: fire,
-        ice: ice,
-        thunder: thunder,
-        force: force,
-        light: light,
-        dark: dark
-    };
-    const resistances = {
-        absorb: absorb,
-        neutral: neutral,
-        null: nullRes,
-        repel: repel,
-        resistance: res,
-        weak: weak,
-    }
-
-    function getElementImg(request) {
-        var returned;
-        Object.entries(elements).map(element => {
-            if (element[0] == request) {
-                returned = element[1];
-            }
-        })
-        return returned;
-    }
-
-    function getResistanceImg(request) {
-        var returned;
-        Object.entries(resistances).map(resistance => {
-            if (resistance[0] == request) {
-                returned = resistance[1];
-            }
-        })
-        return returned;
-    }
-
-    if (!isModifying) {
-        return (
-            <div className="h-[90%] w-[95%] flex m-auto">
+const DemonAdd = () => {
+    return (
+        <div className="h-[90%] w-[95%] flex m-auto">
                 <div className="w-[33%]">
                     <div id="demonLevel" className="flex">
                         <div className="w-1/6 flex justify-center items-center">
-                            <p>Lvl. {demon.level}</p>
+                            <p>Lvl. <input type="number" min={1} placeholder="1" className="w-8 text-black text-center"></input></p>
                         </div>
                         <div className="w-5/6">
-                            <p>{demon.type}</p>
-                            <p>{demon.name}</p>
+                            <p>Type: <input type="text" name="type" className="w-1/2 text-black"></input></p>
+                            <p>Name: <input type="text" name="name" className="w-1/2 text-black"></input></p>
                         </div>
                     </div>
                     <div>
                         <h2 className="border border-black p-1">Condition</h2>
                         <div className="flex justify-evenly">
                             <p className="text-green">HP</p>
-                            <p className="text-green">{demon.stats.hp} / {demon.stats.hp}</p>
+                            <input type="number" min={0} placeholder="1" className="w-8 text-black text-center"></input>
                             <div className="bar bg-green"></div>
                         </div>
                         <div className="flex justify-evenly">
                             <p className="text-yellow">MP</p>
-                            <p className="text-green">{demon.stats.mp} / {demon.stats.mp}</p>
+                            <input type="number" min={0} placeholder="1" className="w-8 text-black text-center"></input>
                             <div className="bar bg-yellow"></div>
                         </div>
                     </div>
@@ -89,12 +32,34 @@ const DemonDetails = () => {
                             <p>Resistances</p>
                         </div>
                         <div className="flex w-1/2 gap-x-1">
-                            {Object.entries(demon.resistances).map(res => (
-                                <div key={res[0]}>
-                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src={getElementImg(res[0])} alt={res[0]} /></div>
-                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src={getResistanceImg(res[1])} alt={res[1]} /></div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
                                 </div>
-                            ))}
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
+                                <div>
+                                    <div className="h-1/2 bg-white/50"><img className="h-full w-full" src="" alt="" /></div>
+                                    <div className="h-1/2 bg-black/50"><img className="h-full w-full" src="" alt="" /></div>
+                                </div>
                         </div>
                     </div>
                     <div>
@@ -104,28 +69,23 @@ const DemonDetails = () => {
                         <div>
                             <div className="w-full flex justify-between items-center">
                                 <p>Strength: </p>
-                                <p>{demon.stats.str}</p>
-                                <Progress stat={demon.stats.str}/>
+                                <input type="number" name="str" className="text-black text-center w-16"></input>
                             </div>
                             <div className="w-full flex justify-between items-center">
                                 <p>Vitality: </p>
-                                <p>{demon.stats.str}</p>
-                                <Progress stat={demon.stats.vit}/>
+                                <input type="number" name="vit" className="text-black text-center w-16"></input>
                             </div>
                             <div className="w-full flex justify-between items-center">
                                 <p>Magic: </p>
-                                <p>{demon.stats.str}</p>
-                                <Progress stat={demon.stats.mag}/>
+                                <input type="number" name="mag" className="text-black text-center w-16"></input>
                             </div>
                             <div className="w-full flex justify-between items-center">
                                 <p>Agility: </p>
-                                <p>{demon.stats.str}</p>
-                                <Progress stat={demon.stats.agi}/>
+                                <input type="number" name="agi" className="text-black text-center w-16"></input>
                             </div>
                             <div className="w-full flex justify-between items-center">
                                 <p>Luck: </p>
-                                <p>{demon.stats.str}</p>
-                                <Progress stat={demon.stats.lu}/>
+                                <input type="number" name="lu" className="text-black text-center w-16"></input>
                             </div>
                         </div>
                     </div>
@@ -139,7 +99,7 @@ const DemonDetails = () => {
                         <div>
                             <div className="w-full flex justify-between items-center p-1 border border-black bg-white/50 rounded mt-1">
                                 <div className="flex items-center gap-x-5">
-                                    <img src={getElementImg("phys")} alt="phys"></img>
+                                    <img src="" alt="phys"></img>
                                     <p>Bufu</p>
                                 </div>
                                 <div className="flex justify-center items-center border border-white bg-black/50 rounded-xl w-20">
@@ -148,7 +108,7 @@ const DemonDetails = () => {
                             </div>
                             <div className="w-full flex justify-between items-center p-1 border border-black bg-white/50 rounded mt-1">
                                 <div className="flex items-center gap-x-5">
-                                    <img src={getElementImg("phys")} alt="phys"></img>
+                                    <img src="" alt="phys"></img>
                                     <p>Bufu</p>
                                 </div>
                                 <div className="flex justify-center items-center border border-white bg-black/50 rounded-xl w-20 mt-1">
@@ -157,7 +117,7 @@ const DemonDetails = () => {
                             </div>
                             <div className="w-full flex justify-between items-center p-1 border border-black bg-white/50 rounded mt-1">
                                 <div className="flex items-center gap-x-5">
-                                    <img src={getElementImg("phys")} alt="phys"></img>
+                                    <img src="" alt="phys"></img>
                                     <p>Bufu</p>
                                 </div>
                                 <div className="flex justify-center items-center border border-white bg-black/50 rounded-xl w-20">
@@ -166,7 +126,7 @@ const DemonDetails = () => {
                             </div>
                             <div className="w-full flex justify-between items-center p-1 border border-black bg-white/50 rounded mt-1">
                                 <div className="flex items-center gap-x-5">
-                                    <img src={getElementImg("phys")} alt="phys"></img>
+                                    <img src="" alt="phys"></img>
                                     <p>Bufu</p>
                                 </div>
                                 <div className="flex justify-center items-center border border-white bg-black/50 rounded-xl w-20">
@@ -181,16 +141,7 @@ const DemonDetails = () => {
                     </div>
                 </div>
             </div>
-        )
-    } else {
-        return (
-            <div className="demonDetailsDiv">
-                <div></div>
-                <div>CA MODIFIE ICI</div>
-                <div></div>
-            </div>
-        )
-    }
+    )
 }
 
-export default DemonDetails;
+export default DemonAdd;

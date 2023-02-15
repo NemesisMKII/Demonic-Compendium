@@ -6,10 +6,9 @@ import { getCurrentGame } from "../services/gameServices";
 const DemonListView = (props) => {    
 
     var demonList = getDemonList(props.game);
-    console.log(demonList);
 
     return (
-        <div id="demonListDiv">
+        <div className="h-full w-full flex justify-center items-center">
             <DemonList list={demonList}/>
         </div>
     )

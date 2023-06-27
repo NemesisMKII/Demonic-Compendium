@@ -1,0 +1,23 @@
+{
+    "name": "string",
+    "type": "string",
+    "lvl": "int",
+    "stats": {
+        "hp": "int",
+        "mp": "int",
+        "str": "int",
+        "vit": "int",
+        "mag": "int",
+        "agi": "int",
+        "lu": "int"
+    },
+    "skills": [
+        {
+            "name": "string",
+            "mpCost": "int",
+            "lvl": "int"
+        }
+    ],
+    "game": [],
+    "fusions": []
+}

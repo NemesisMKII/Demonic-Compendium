@@ -1,8 +1,14 @@
 import React from "react";
+import { setBackground, setCurrentGame } from "../Services/gameServices";
 
 const GameMenuElement = ({game}) => {
     return (
-        <li>{game.name}</li>
+        <li onClick={() => {
+            setCurrentGame(game.slug)
+            setBackground(game.background)
+        }}>
+            {game.name}
+        </li>
     )
 }
 

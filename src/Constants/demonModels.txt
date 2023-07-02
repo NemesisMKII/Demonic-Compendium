@@ -1,0 +1,115 @@
+// Modèle 1 - Modèle initial pour la fiche démon, Fonctionne pour un jeu mais pour plusieurs non, car les stats d'un démon, son niveau d'obtention
+et ses sorts ne sont pas identiques d'un jeu à l'autre.
+
+{
+    "name": "string",
+    "type": "string",
+    "lvl": "int",
+    "stats": {
+        "hp": "int",
+        "mp": "int",
+        "str": "int",
+        "vit": "int",
+        "mag": "int",
+        "agi": "int",
+        "lu": "int"
+    },
+    "skills": [
+        {
+            "name": "string",
+            "mpCost": "int",
+            "lvl": "int"
+        }
+    ],
+    "game": [],
+    "fusions": []
+}
+
+// Modèle 2 - Même modèle que le 1er, mais on sépare le lvl, les stats, les sorts et les fusions de chaque jeu. Seul le type et le nom 
+restent inchangés.
+Cela permet de n'avoir qu'une fois un démon, mais avec autant de versions de ce démon que de jeux existants.
+ça évite de créer plusieurs fois le même démon pour des jeux différents.
+
+{
+    "name": "string",
+    "type": "string",
+    "picture": "string",
+
+    "game": {
+        "SMT": {
+            "lvl": "int",
+            "stats": {
+                "hp": "int",
+                "mp": "int",
+                "str": "int",
+                "vit": "int",
+                "mag": "int",
+                "agi": "int",
+                "lu": "int"
+            },
+            "resistances": {
+                "phys": "string",
+                "fire": "string",
+                "ice": "string",
+                "thunder": "string",
+                "force": "string",
+                "light": "string",
+                "dark": "string",
+            },
+            "skills": [
+                {
+                    "name": "string",
+                    "mpCost": "int",
+                    "lvl": "int"
+                }
+            ],
+        },
+        "SMTII": ...
+    }
+    "fusions": {
+        "SMT": [],
+        "SMTII": ...
+    }
+}
+
+// Modèle 3 - 3e modèle possible, avec un gros défaut: En faisant une liste de démons par jeu, on va se retrouver avec X fois le même démon,
+possédant le même nom, type, et peut-être même le lvl.
+Modèle plus facile à réaliser mais moins optimisé.
+
+"game": {
+    "SMT": {
+        "name": "string",
+        "type": "string",
+        "lvl": "int",
+        "stats": {
+            "hp": "int",
+            "mp": "int",
+            "str": "int",
+            "vit": "int",
+            "mag": "int",
+            "agi": "int",
+            "lu": "int"
+        },
+        "skills": [
+            {
+                "name": "string",
+                "mpCost": "int",
+                "lvl": "int"
+            }
+        ],
+        "fusions": []
+    },
+    "SMTII": ...
+}
+
+AVANTAGES DU MODELE 2 PAR RAPPORT AU MODELE 3:
+
+- Mieux optimisé
+- Dans ce modèle un démon est crée une fois dans la base de données, et seules les données susceptibles de changer selon le jeu
+sont rangées dans une section ou chaque jeu sera séparé. 
+Normalement je devrais pouvoir récupérer le démon, puis récupérer selon le jeu choisi le jeu de stats qui m'intéresse.
+
+AVANTAGES DU MODELE 3 PAR RAPPORT AU MODELE 2:
+
+- Plus simple à réaliser.
+- + facile à filter, vu qu'on crée un démon par jeu, on a juste a récupérer la liste du jeu qui nous intéresse

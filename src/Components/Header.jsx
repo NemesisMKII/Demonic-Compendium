@@ -12,8 +12,8 @@ export default function Header() {
             </Link>
             <ul className="absolute bottom-1 flex text-l font-semibold textShadow">
                 {gameList.map(game => (
-                    <Link to={DEMON_LIST_URL.replace(":game", game.slug)}>
-                        <GameMenuElement key={game.slug} game={game} />
+                    <Link to={DEMON_LIST_URL.replace(":game", game.slug)} key={game.slug}>
+                        <GameMenuElement game={game} />
                     </Link>
                 ))}
             </ul>

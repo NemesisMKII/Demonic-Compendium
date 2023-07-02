@@ -1,11 +1,13 @@
 import React from "react";
 import DemonList from "../Components/DemonList.";
+import Container from "../Components/Container";
+import { useParams } from "react-router-dom";
 
 const DemonListView = () => {
     return (
-        <div>
-            <DemonList />
-        </div>
+        <Container>
+            <DemonList game={useParams().game} />
+        </Container>
     )
 }
 

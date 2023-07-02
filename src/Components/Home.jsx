@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
     return (
-        <div className="h-[95%] w-[95%] bg-white/[65%] m-auto text-center text-black font-bold">
+        <div className="h-full w-full bg-white/[65%] text-center text-black font-bold">
             <h1 className="font-bold text-6xl">BONJOUR . . .</h1>
             <br />
             <br />

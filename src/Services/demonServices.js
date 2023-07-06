@@ -7,11 +7,14 @@ function setDemonLocalStorage(demonStorage) {
 }
 
 function getDemonFromLocalStorage() {
-    return JSON.parse(localStorage.getItem("DemonList"));
+    var jsonList = localStorage.getItem("DemonList");
+    if (jsonList)
+        return JSON.parse(jsonList);
+    return [];
 }
 
 export function getDemonList(game) {
-    const demonList = getDemonFromLocalStorage()
+    const demonList = getDemonFromLocalStorage();
     return demonList.filter(demon => demon.game[game]);
 }
 
@@ -31,7 +34,7 @@ export function storeDemon (newDemon, game) {
     setDemonLocalStorage(demonList);
 }
 
-//POSER LA QUESTION A MARC: pourquoi mes données se mettent à jourt sans que j'ai besoin de faire un return dans mes fonctions
+//POSER LA QUESTION A MARC: pourquoi mes données se mettent à jour sans que j'ai besoin de faire un return dans mes fonctions
 //HYPOTHESE: Les fonctions updateDemon et updateDemonList que j'appelle font partie de la portée de la fonction storeDemon,
 //ce qui fait que lorsque je modifie une valeur dans une fonction,
 function getDemonIndex(demon, demonList) {

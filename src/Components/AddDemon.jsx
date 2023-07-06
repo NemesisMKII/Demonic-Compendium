@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { storeDemon } from "../Services/demonServices";
 import phys from "../assets/icons/elements/physical.png";
 import thunder from "../assets/icons/elements/thunder.png";
@@ -8,6 +8,7 @@ import force from "../assets/icons/elements/force.png";
 import light from "../assets/icons/elements/light.png";
 import dark from "../assets/icons/elements/dark.png";
 import unknownDemonImg from "../assets/demons/unknown_demon.png"
+import DemonResistanceInput from "./utils/DemonResistanceInput";
 
 const AddDemonForm = (props) => {
     const [form, setForm] = useState({
@@ -21,13 +22,13 @@ const AddDemonForm = (props) => {
         mag: 0,
         agi: 0,
         lu: 0,
-        phys: 0,
-        fire: 0,
-        ice: 0,
-        thunder: 0,
-        force: 0,
-        light: 0,
-        dark: 0,
+        phys: "neutral",
+        fire: "neutral",
+        ice: "neutral",
+        thunder: "neutral",
+        force: "neutral",
+        light: "neutral",
+        dark: "neutral",
     })
 
     const handleChange = (event) => {
@@ -116,53 +117,39 @@ const AddDemonForm = (props) => {
                         <img className="boxStatsShadow p-1 w-16 h-16" src={dark} />
                     </div>
                     <div className="w-full flex space-x-2">
-                        <input
+                        <DemonResistanceInput 
                             id="phys"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.phys}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="fire"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.fire}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="ice"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.ice}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="thunder"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.thunder}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="force"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.force}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="light"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
                             value={form.light}
                             onChange={handleChange}
                         />
-                        <input
+                        <DemonResistanceInput 
                             id="dark"
-                            type="text"
-                            className="p-1 w-16 h-16 bg-black/70 boxStatsShadow"
-                            value={form.dark}
+                            value={form.phys}
                             onChange={handleChange}
                         />
                     </div>

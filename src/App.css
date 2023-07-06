@@ -36,3 +36,23 @@ header ul li:hover {
 .boxStatsShadow {
   box-shadow: inset 0px 0px 16px rgba(255, 255, 255, 0.9);
 }
+
+.textStatsColor {
+  color: rgb(214, 205, 146);
+}
+
+.textColorGreen {
+  color: rgb(153, 248, 56);
+}
+
+.textColorYellow {
+  color: rgb(255, 218, 47);
+}
+
+.bgColorYellow {
+  background-color: rgb(255, 218, 47);
+}
+
+.bgColorGreen {
+  background-color: rgb(153, 248, 56);
+}

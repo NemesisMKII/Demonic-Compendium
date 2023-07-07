@@ -7,25 +7,13 @@ import force from "../assets/icons/elements/force.png";
 import light from "../assets/icons/elements/light.png";
 import dark from "../assets/icons/elements/dark.png";
 import unknownDemonImg from "../assets/demons/unknown_demon.png"
-import neutral from "../assets/icons/resistances/neutral.png"
-import absorb from "../assets/icons/resistances/absorb.png"
-import nullRes from "../assets/icons/resistances/null.png"
-import repel from "../assets/icons/resistances/repel.png"
-import weak from "../assets/icons/resistances/weak.png"
-import resistance from "../assets/icons/resistances/resistance.png"
+import { getResistanceIcons } from "../Services/demonServices";
 
 const Demon = ({game, demon}) => {
 
     const demonData = demon.game[game]
 
-    const resistances = {
-        neutral: neutral,
-        absorb: absorb,
-        nullRes: nullRes,
-        repel: repel,
-        weak: weak,
-        resistance: resistance
-    }
+    const resistances = getResistanceIcons()
 
     return (
         <div className="h-full w-full flex space-x-2 text-white">

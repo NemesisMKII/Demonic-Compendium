@@ -1,46 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { getElementsIcons, storeDemon } from "../Services/demonServices";
-import unknownDemonImg from "../assets/demons/unknown_demon.png"
-import DemonResistanceInput from "./utils/form/DemonResistanceInput";
+import React from "react";
 
-const AddDemonForm = (props) => {
-    const [form, setForm] = useState({
-        name: "",
-        type: "",
-        lvl: 0,
-        hp: 0,
-        mp: 0,
-        str: 0,
-        vit: 0,
-        mag: 0,
-        agi: 0,
-        lu: 0,
-        phys: "neutral",
-        fire: "neutral",
-        ice: "neutral",
-        thunder: "neutral",
-        force: "neutral",
-        light: "neutral",
-        dark: "neutral",
-    })
-
-    const elements = getElementsIcons()
-
-    const handleChange = (event) => {
-        setForm({
-            ...form,
-            [event.target.id]: event.target.value,
-        })
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        props.onValidation(form)
-    }
-     
+const DemonTemplate = () => {
     return (
-        <form className="h-full w-full flex space-x-2 text-black" onSubmit={handleSubmit}>
-            <div className="h-full w-1/3">-
+        <>
+        <div className="h-full w-1/3">-
                 <div className="w-full h-1/5 m-auto flex">
                     <div className="h-full w-1/4 flex">  
                         <div className="w-3/4 h-3/4 m-auto flex border-[3px] rounded-full">
@@ -103,13 +66,13 @@ const AddDemonForm = (props) => {
                 <div className="p-2">
                     <h1 className="text-2xl mb-2 w-1/2 text-center text-white rounded-xl bg-black/50 boxStatsShadow">Resistances</h1>
                     <div className="w-full flex space-x-2">
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["phys"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["fire"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["ice"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["thunder"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["force"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["light"]} />
-                        <img className="boxStatsShadow p-1 w-16 h-16" src={elements["dark"]} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={phys} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={fire} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={ice} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={thunder} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={force} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={light} />
+                        <img className="boxStatsShadow p-1 w-16 h-16" src={dark} />
                     </div>
                     <div className="w-full flex space-x-2">
                         <DemonResistanceInput 
@@ -202,61 +165,15 @@ const AddDemonForm = (props) => {
                         />
                     </div>
                 </div>
-            </div>
-            <div className="h-full w-1/3 space-y-5">
-                <img className="m-auto h-[90%]" src={unknownDemonImg} />
-                <button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Ajouter démon</button>
-            </div>
-            <div className="h-full w-1/3 bg-blue-500"></div>
-        </form>
-    )
-}
-
-const AddDemon = ({game}) => {
-    const createDemon = (form) => {
-        const Demon = {
-            name: form.name,
-            type: form.type,
-            game: {
-                [game.slug]: {
-                    lvl: form.lvl,
-                    stats: {
-                        hp: form.hp,
-                        mp: form.mp,
-                        str: form.str,
-                        vit: form.vit,
-                        mag: form.mag,
-                        agi: form.agi,
-                        lu: form.lu
-                    },
-                    resistances: {
-                        phys: form.phys,
-                        fire: form.fire,
-                        ice: form.ice,
-                        thunder: form.thunder,
-                        force: form.force,
-                        light: form.light,
-                        dark: form.dark,
-                    },
-                    skills: [
-                        {
-                            name: "attaque",
-                            mpCost: 5,
-                            lvl: 1
-                        }
-                    ]
-                }
-            }
-        }
-
-        storeDemon(Demon, game.slug)
-    }
-
-    return  (
-        <>
-            <AddDemonForm onValidation={(form) => {createDemon(form)}}/>
+        </div>
+        <div className="h-full w-1/3 space-y-5">
+            <img className="m-auto h-[90%]" src={unknownDemonImg} />
+            <button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Ajouter démon</button>
+        </div>
+        <div className="h-full w-1/3 bg-blue-500">
+        </div>
         </>
     )
 }
 
-export default AddDemon;
+export default DemonTemplate;

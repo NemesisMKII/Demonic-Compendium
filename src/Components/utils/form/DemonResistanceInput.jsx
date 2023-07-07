@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import neutral from "../../assets/icons/resistances/neutral.png"
-import absorb from "../../assets/icons/resistances/absorb.png"
-import nullRes from "../../assets/icons/resistances/null.png"
-import repel from "../../assets/icons/resistances/repel.png"
-import weak from "../../assets/icons/resistances/weak.png"
-import resistance from "../../assets/icons/resistances/resistance.png"
+import { getResistanceIcons } from "../../../Services/demonServices";
 
 //CONTINUER POUR LA VALIDATION DE L'INPUT
 const DemonResistanceInput = ({id, value, onChange}) => {
@@ -19,14 +14,7 @@ const DemonResistanceInput = ({id, value, onChange}) => {
         });
     }, [inputValue])
 
-    const resistances = {
-        neutral: neutral,
-        absorb: absorb,
-        nullRes: nullRes,
-        repel: repel,
-        weak: weak,
-        resistance: resistance
-    }
+    const resistances = getResistanceIcons()
 
     const resKeys = Object.keys(resistances);
     var inputPos = resKeys.indexOf(inputValue);

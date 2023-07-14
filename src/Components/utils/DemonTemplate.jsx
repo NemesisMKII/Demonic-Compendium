@@ -49,9 +49,25 @@ const DemonTemplate = ({lvlDiv, infoDiv, conditionDiv, resDiv, statsDiv, submit 
             </div>
             <div className="h-full w-1/3 space-y-5">
                 <img className="m-auto h-[90%]" src={unknownDemonImg} />
-                <button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Ajouter démon</button>
+                {submit}
             </div>
-            <div className="h-full w-1/3 bg-blue-500"></div>
+            <div className="h-full w-1/3 flex">
+                <div className="w-full h-3/4 m-auto">
+                    <h1 className="text-2xl mb-2 w-1/2 text-center text-white rounded-xl bg-black/50 boxStatsShadow">Skills</h1>
+                    <div className="space-y-2">
+                        <div className="w-full h-14 bg-white/30 boxStatsShadow flex items-center justify-between">
+                            
+                        </div>
+                        <div className="w-full h-14 bg-white/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-white/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-white/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-black/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-black/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-black/30 boxStatsShadow"></div>
+                        <div className="w-full h-14 bg-black/30 boxStatsShadow"></div>
+                    </div>
+                </div>  
+            </div>
         </>
     )
 }

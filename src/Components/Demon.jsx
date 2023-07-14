@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getResistanceIcons } from "../Services/demonServices";
 import DemonTemplate from "./utils/DemonTemplate";
+import Progress from "./utils/Progress";
 
 const Demon = ({game, demon}) => {
 
@@ -8,10 +9,6 @@ const Demon = ({game, demon}) => {
     const resistances = getResistanceIcons()
     const [resHoverData, setResHoverData] = useState("");
 
-    useEffect(() => {
-        console.log(resHoverData);
-    }, [resHoverData])
-    
     const LvlInfo = () => {
         return (
             <>
@@ -24,7 +21,7 @@ const Demon = ({game, demon}) => {
     const BasicInfo = () => {
         return (
             <>
-                <p className="h-1/3 w-3/4 text-3xl font-semibold">{demon.type}</p>
+                <p className="h-1/3 w-3/4 text-3xl font-semibold textColorGreen textShadow">{demon.type}</p>
                 <p className="h-1/3 w-3/4 text-4xl font-bold">{demon.name}</p>
             </>
         )
@@ -113,26 +110,40 @@ const Demon = ({game, demon}) => {
     const StatsInfo = () => {
         return (
             <>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <p className="text-xl font-bold textStatsColor textShadow h-3/4">Force:</p>
-                <p className="text-xl font-bold textColorGreen textShadow h-3/4">{demonData.stats.str}</p>
-                <div className="w-1/3 h-5 bgColorGreen border border-black"></div>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <p className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Force:</p>
+                <p className="w-1/12 text-2xl text-end font-bold textColorGreen textShadow">{demonData.stats.str}</p>
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={demonData.stats.str}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <p className="text-xl font-bold textStatsColor textShadow h-3/4">Vitalité:</p>
-                <p className="text-xl font-bold textColorGreen textShadow h-3/4">{demonData.stats.vit}</p>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <p className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Vitalité:</p>
+                <p className="w-1/12 text-2xl text-end font-bold textColorGreen textShadow">{demonData.stats.vit}</p>
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={demonData.stats.vit}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <p className="text-xl font-bold textStatsColor textShadow h-3/4">Magie:</p>
-                <p className="text-xl font-bold textColorGreen textShadow h-3/4">{demonData.stats.mag}</p>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <p className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Magie:</p>
+                <p className="w-1/12 text-2xl text-end font-bold textColorGreen textShadow">{demonData.stats.mag}</p>
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={demonData.stats.mag} />
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <p className="text-xl font-bold textStatsColor textShadow h-3/4">Agilité:</p>
-                <p className="text-xl font-bold textColorGreen textShadow h-3/4">{demonData.stats.agi}</p>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <p className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Agilité:</p>
+                <p className="w-1/12 text-2xl text-end font-bold textColorGreen textShadow">{demonData.stats.agi}</p>
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={demonData.stats.agi} />
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <p className="text-xl font-bold textStatsColor textShadow h-3/4">Chance:</p>
-                <p className="text-xl font-bold textColorGreen textShadow h-3/4">{demonData.stats.lu}</p>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <p className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Chance:</p>
+                <p className="w-1/12 text-2xl text-end font-bold textColorGreen textShadow">{demonData.stats.lu}</p>
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={demonData.stats.lu} />
+                </div>
             </div>
             </>
         )

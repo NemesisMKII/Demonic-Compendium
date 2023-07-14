@@ -3,6 +3,7 @@ import { getElementsIcons, storeDemon } from "../Services/demonServices";
 import unknownDemonImg from "../assets/demons/unknown_demon.png"
 import DemonResistanceInput from "./utils/form/DemonResistanceInput";
 import DemonTemplate from "./utils/DemonTemplate";
+import Progress from "./utils/Progress";
 
 const LvlInput = ({form, handleChange}) => {
     return (
@@ -74,55 +75,70 @@ const ConditionInput = ({form, handleChange}) => {
 const StatsInput = ({form, handleChange}) => {
     return (
         <>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <label htmlFor="str" className="text-xl font-bold text-green-500 textShadow h-3/4">Force:</label>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <label htmlFor="str" className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Force:</label>
                 <input
                     id="str"
                     type="number"
-                    className="h-5 text-center text-xl font-bold"
+                    className="w-1/12 text-2xl text-end font-bold"
                     value={form.str}
                     onChange={handleChange}
                 />
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={form.str}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <label htmlFor="vit" className="text-xl font-bold text-green-500 textShadow h-3/4">Vitalité:</label>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <label htmlFor="vit" className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Vitalité:</label>
                 <input
                     id="vit"
                     type="number"
-                    className="h-5 text-center text-xl font-bold"
+                    className="w-1/12 text-2xl text-end font-bold"
                     value={form.vit}
                     onChange={handleChange}
                 />
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={form.vit}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <label htmlFor="mag" className="text-xl font-bold text-green-500 textShadow h-3/4">Magie:</label>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <label htmlFor="mag" className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Magie:</label>
                 <input
                     id="mag"
                     type="number"
-                    className="h-5 text-center text-xl font-bold"
+                    className="w-1/12 text-2xl text-end font-bold"
                     value={form.mag}
                     onChange={handleChange}
                 />
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={form.mag}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <label htmlFor="agi" className="text-xl font-bold text-green-500 textShadow h-3/4">Agilité:</label>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <label htmlFor="agi" className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Agilité:</label>
                 <input
                     id="agi"
                     type="number"
-                    className="h-5 text-center text-xl font-bold"
+                    className="w-1/12 text-2xl text-end font-bold"
                     value={form.agi}
                     onChange={handleChange}
                 />
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={form.agi}/>
+                </div>
             </div>
-            <div className="w-full flex items-center justify-evenly border border-black boxStatsShadow rounded-xl">
-                <label htmlFor="lu" className="text-xl font-bold text-green-500 textShadow h-3/4">Chance:</label>
+            <div className="w-full h-9 flex items-center border border-black bg-black/50 boxStatsShadow rounded-xl space-x-2">
+                <label htmlFor="lu" className="w-3/12 text-2xl font-bold textStatsColor textShadow text-end">Chance:</label>
                 <input
                     id="lu"
                     type="number"
-                    className="h-5 text-center text-xl font-bold"
+                    className="w-1/12 text-2xl text-end font-bold"
                     value={form.lu}
                     onChange={handleChange}
                 />
+                <div className="w-8/12 h-3.5">
+                    <Progress progress={form.lu}/>
+                </div>
             </div>
         </>
     )

@@ -6,7 +6,7 @@ const Progress = ({progress = 0}) => {
     var test = React.createElement("div", {
         className: progressClass,
         style: {
-            width: progress+"%",
+            width: (progress > 100 ? 100 : progress)+"%",
         }
     });
 

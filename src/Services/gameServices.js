@@ -49,7 +49,7 @@ export const setCurrentGame = (gameSlug) => {
     return gameSlug;
 }
 
-export const setBackground = (gameBackground) => {
+export const setBackground = (gameBackground = null) => {
     var root = document.getElementById("root");
     if (!gameBackground) {
         root.style.background = `url("${base}")`

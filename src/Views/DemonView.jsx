@@ -2,7 +2,6 @@ import React from "react";
 import Container from "../Components/Container";
 import { useParams } from "react-router-dom";
 import Demon from "../Components/Demon";
-import { getGameData } from "../Services/gameServices";
 import { getDemon } from "../Services/demonServices";
 
 const DemonView = () => {

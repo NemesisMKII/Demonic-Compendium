@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { MODIFY_DEMON_URL } from "../Constants/urls";
 
 const Demon = ({gameName, demon}) => {
-    console.log(gameName);
 
     const demonData = demon.game[gameName]
     const resistances = getResistanceIcons()

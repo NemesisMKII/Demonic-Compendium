@@ -3,6 +3,7 @@ import { storeDemon } from "../Services/demonServices";
 import DemonResistanceInput from "./utils/form/DemonResistanceInput";
 import DemonTemplate from "./templates/DemonTemplate";
 import Progress from "./utils/Progress";
+import { Navigate } from "react-router-dom";
 
 const LvlInput = ({form, handleChange}) => {
     return (
@@ -293,6 +294,9 @@ const AddDemon = ({game, existingDemon = null, modify = null}) => {
         }
 
         storeDemon(Demon, game.slug)
+        return (
+            <Navigate to={""} />
+        )
     }
 
     return  (

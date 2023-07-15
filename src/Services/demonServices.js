@@ -72,7 +72,6 @@ function getDemonIndex(demon, demonList) {
 export function storeDemon (newDemon, game) {
     var demonList = getDemonFromLocalStorage();
     var existingDemon = getDemon(newDemon.name);
-    console.log(existingDemon);
     if (existingDemon) {
         updateDemon(newDemon, existingDemon, game)
         updateDemonList(existingDemon, demonList)
@@ -80,6 +79,11 @@ export function storeDemon (newDemon, game) {
         demonList.push(newDemon);
     }
     setDemonLocalStorage(demonList);
+
+    //Redirects to Demon Details Page
+    setTimeout(() => {
+        window.location.href = "/:game/:demon".replace(":game", game).replace(":demon", newDemon.name);
+    })
 }
 
 

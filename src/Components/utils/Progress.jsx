@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Progress = ({progress = 0}) => {
-    console.log(progress);
     var progressClass = "h-full bg-white"
 
     var test = React.createElement("div", {

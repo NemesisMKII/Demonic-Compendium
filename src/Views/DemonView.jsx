@@ -1,14 +1,20 @@
 import React from "react";
 import Container from "../Components/Container";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Demon from "../Components/Demon";
+import { getGameData } from "../Services/gameServices";
+import { getDemon } from "../Services/demonServices";
 
 const DemonView = () => {
-    const game = useLocation().state.game
-    const demon = useLocation().state.demon
+
+    const gameName = useParams().game
+    
+    const demonName = useParams().demon
+    const demonData = getDemon(demonName)
+
     return (
         <Container>
-            <Demon game={game} demon={demon} />
+            <Demon gameName={gameName} demon={demonData} />
         </Container>
     )
 }

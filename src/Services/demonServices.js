@@ -55,8 +55,9 @@ function updateDemonList(existingDemon, demonList) {
 */
 
 //GET
-export function getDemon(DemonName, demonList) {
-    return demonList.filter(demon => DemonName === demon.name);
+export function getDemon(DemonName) {
+    const demonList = getDemonFromLocalStorage()
+    return demonList.filter(demon => DemonName === demon.name)[0];
 }
 
 function getDemonIndex(demon, demonList) {
@@ -70,8 +71,9 @@ function getDemonIndex(demon, demonList) {
 //UPDATE
 export function storeDemon (newDemon, game) {
     var demonList = getDemonFromLocalStorage();
-    if (checkDemonExists(newDemon, demonList)) {
-        var existingDemon = getDemon(newDemon.name, demonList)[0]
+    var existingDemon = getDemon(newDemon.name);
+    console.log(existingDemon);
+    if (existingDemon) {
         updateDemon(newDemon, existingDemon, game)
         updateDemonList(existingDemon, demonList)
     } else {
@@ -83,11 +85,6 @@ export function storeDemon (newDemon, game) {
 
 function updateDemon(newDemon, existingDemon, game) {
     existingDemon.game[game] = newDemon.game[game]
-}
-
-//CHECKS
-function checkDemonExists(newDemon, demonList) {
-    return (demonList.filter(demon => demon.name === newDemon.name).length > 0)
 }
 
 /* ============================================ 

@@ -39,6 +39,10 @@ export const gameList = [
     }
 ]
 
+export const getGameData = (game) => {
+    return gameList.filter(gameElement => gameElement.slug === game)[0]
+}
+
 export const setCurrentGame = (gameSlug) => {
     localStorage.setItem("game", gameSlug)
 

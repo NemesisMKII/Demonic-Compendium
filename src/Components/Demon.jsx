@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { getResistanceIcons } from "../Services/demonServices";
-import DemonTemplate from "./utils/DemonTemplate";
+import DemonTemplate from "./templates/DemonTemplate";
 import Progress from "./utils/Progress";
+import { Link } from "react-router-dom";
+import { MODIFY_DEMON_URL } from "../Constants/urls";
 
-const Demon = ({game, demon}) => {
+const Demon = ({gameName, demon}) => {
+    console.log(gameName);
 
-    const demonData = demon.game[game]
+    const demonData = demon.game[gameName]
     const resistances = getResistanceIcons()
     const [resHoverData, setResHoverData] = useState("");
 
@@ -49,6 +52,7 @@ const Demon = ({game, demon}) => {
             <>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.phys]}
                         onMouseEnter={() => {setResHoverData(demonData.resistances.phys)}}
@@ -57,6 +61,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.fire]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.fire)}}
@@ -65,6 +70,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.ice]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.ice)}}
@@ -73,6 +79,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.thunder]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.thunder)}}
@@ -81,6 +88,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.force]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.force)}}
@@ -89,6 +97,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.light]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.light)}}
@@ -97,6 +106,7 @@ const Demon = ({game, demon}) => {
                 </div>
                 <div className="p-1 w-16 h-16 bg-black/70 boxStatsShadow flex">
                     <img 
+                        alt=""
                         className="w-[60%] h-[60%] m-auto" 
                         src={resistances[demonData.resistances.dark]} 
                         onMouseEnter={() => {setResHoverData(demonData.resistances.dark)}}
@@ -158,6 +168,13 @@ const Demon = ({game, demon}) => {
                 resDiv={<ResistancesInfo />}
                 statsDiv={<StatsInfo />}
                 resHoverData={resHoverData}
+                button={
+                <Link 
+                    to={MODIFY_DEMON_URL.replace(":game", gameName).replace(":demon", demon.name)}
+                >
+                    <button className="text-2xl font-bold bg-orange-500 boxStatsShadow p-1 block m-auto textShadow">Modifier démon</button>
+                </Link>
+                }
             />
         </div>
     )

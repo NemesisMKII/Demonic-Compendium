@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { getElementsIcons, storeDemon } from "../Services/demonServices";
-import unknownDemonImg from "../assets/demons/unknown_demon.png"
+import React, { useState } from "react";
+import { storeDemon } from "../Services/demonServices";
 import DemonResistanceInput from "./utils/form/DemonResistanceInput";
-import DemonTemplate from "./utils/DemonTemplate";
+import DemonTemplate from "./templates/DemonTemplate";
 import Progress from "./utils/Progress";
 
 const LvlInput = ({form, handleChange}) => {
@@ -195,7 +194,7 @@ const ResistancesInput = ({form, handleChange, hoverChange}) => {
 }
 
 const AddDemonForm = (props) => {
-    const [form, setForm] = useState({
+    const formTemplate = props.existingDemon || {
         name: "",
         type: "",
         lvl: 0,
@@ -213,11 +212,11 @@ const AddDemonForm = (props) => {
         force: "neutral",
         light: "neutral",
         dark: "neutral",
-    })
+    }
+
+    const [form, setForm] = useState(formTemplate)
 
     const [resHoverData, setResHoverData] = useState("")
-
-    const elements = getElementsIcons()
 
     const handleChange = (event) => {
         setForm({
@@ -231,6 +230,15 @@ const AddDemonForm = (props) => {
         props.onValidation(form)
     }
 
+    const SubmitButton = () => {
+        if (props.modify === true) {
+            return (
+                <button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Confirmer</button>
+            )
+        }
+
+        return <button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Ajouter démon</button>
+    }
      
     return (
         <form className="h-full w-full flex space-x-2 text-black" onSubmit={handleSubmit}>
@@ -241,13 +249,13 @@ const AddDemonForm = (props) => {
                 resDiv={<ResistancesInput form={form} handleChange={handleChange} hoverChange={(resData) => {setResHoverData(resData)}} />}
                 statsDiv={<StatsInput form={form} handleChange={handleChange} />}
                 resHoverData={resHoverData}
-                submit={<button className="text-2xl font-bold bg-green-500 boxStatsShadow p-1 block m-auto" type="submit">Ajouter démon</button>}
+                button={<SubmitButton />}
             />
         </form>
     )
 }
 
-const AddDemon = ({game}) => {
+const AddDemon = ({game, existingDemon = null, modify = null}) => {
     const createDemon = (form) => {
         const Demon = {
             name: form.name,
@@ -289,7 +297,7 @@ const AddDemon = ({game}) => {
 
     return  (
         <>
-            <AddDemonForm onValidation={(form) => {createDemon(form)}}/>
+            <AddDemonForm onValidation={(form) => {createDemon(form)}} existingDemon={existingDemon} modify={modify}/>
         </>
     )
 }

@@ -3,7 +3,7 @@ import DemonList from "../Components/DemonList.";
 import Container from "../Components/Container";
 import { useParams } from "react-router-dom";
 import { getGameData, setBackground } from "../Services/gameServices";
-import { getDemonList } from "../Services/demonServices";
+import { getFilteredDemonList } from "../Services/demonServices";
 
 const DemonListView = () => {
     
@@ -12,7 +12,7 @@ const DemonListView = () => {
 
     setBackground(gameData.background);
 
-    const demonList = getDemonList(gameName);
+    const demonList = getFilteredDemonList(gameName);
     
     return (
         <Container>

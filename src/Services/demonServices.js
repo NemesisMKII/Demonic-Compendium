@@ -25,7 +25,7 @@ function getDemonFromLocalStorage() {
 }
 
 //UPDATE
-function setDemonLocalStorage(demonStorage) {
+export function setDemonLocalStorage(demonStorage) {
     if (!localStorage.getItem("DemonList")) {
         localStorage.setItem("DemonList", JSON.stringify([]));
     } else {
@@ -39,14 +39,22 @@ function setDemonLocalStorage(demonStorage) {
 */
 
 //GET
-export function getDemonList(game) {
-    const demonList = getDemonFromLocalStorage();
-    return demonList.filter(demon => demon.game[game]);
+export function getDemonList() {
+    return getDemonFromLocalStorage();
+}
+
+export function getFilteredDemonList(game) {
+    return getDemonList().filter(demon => demon.game[game]);
 }
 
 //UPDATE
 function updateDemonList(existingDemon, demonList) {
     demonList[getDemonIndex(existingDemon, demonList)] = existingDemon;
+}
+
+//FILTER
+export function filterDemonList(demonList, game) {
+    return demonList.filter(demon => demon.game[game])
 }
 
 
@@ -86,6 +94,13 @@ export function storeDemon (newDemon, game) {
     })
 }
 
+//DELETE
+export function deleteDemonsfromList(demonsToDelete, demonList, gameSlug) {
+    demonList = "oui"
+    console.log(demonList);
+
+    return demonList;
+}
 
 function updateDemon(newDemon, existingDemon, game) {
     existingDemon.game[game] = newDemon.game[game]

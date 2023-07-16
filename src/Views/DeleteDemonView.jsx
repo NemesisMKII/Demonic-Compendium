@@ -10,7 +10,7 @@ const DeleteDemonView = () => {
     const gameName = useParams().game;
     const gameData = getGameData(gameName);
 
-    const demonList = getDemonList(gameName);
+    const demonList = getDemonList();
 
     return (
         <Container>

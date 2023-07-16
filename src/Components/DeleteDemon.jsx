@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import DemonBox from "./utils/DemonBox";
+import { setDemonLocalStorage } from "../Services/demonServices";
 
 const DeleteDemon = ({game, demonList}) => {
 
     const [demons, setDemonList] = useState(demonList);
     const [demonsToDelete, setDemonsToDelete] = useState([]);
+
+    useEffect(() => {
+        setDemonLocalStorage(demons);
+    }, [demons])
 
     const handleChange = (demonName, action) => {
         switch(action) {
@@ -20,9 +25,14 @@ const DeleteDemon = ({game, demonList}) => {
     }
 
     const handleDelete = () => {
-        for (let index = 0; index < demonsToDelete.length; index++) {
-            setDemonList(demons.filter(demon => demon.name !== demonsToDelete[index]))
-        }
+        demonsToDelete.forEach(demonsToDelete => {
+            setDemonList(demons.map(demon => {
+                if (demon.name === demonsToDelete) {
+                    delete demon.game[game.slug];
+                }
+                return demon;
+            }))
+        })
     }
 
     return (
@@ -31,7 +41,9 @@ const DeleteDemon = ({game, demonList}) => {
                 <h1 className="text-5xl font-bold">{game.name}</h1>
                 <h1 className="text-3xl">Liste des démons</h1>
                 <div className="w-[95%] h-3/4 boxStatsShadow bg-black/20 mt-2 m-auto space-x-4 flex flex-wrap justify-center p-5">
-                    {demons.map(demon => (
+                    {demons
+                        .filter(demon => demon.game[game.slug])
+                        .map(demon => (
                         <DemonBox key={demon.name} demon={demon} deleteMode={true} onChange={(demonName, action) => {handleChange(demonName, action)}}/>
                     ))}
                 </div>

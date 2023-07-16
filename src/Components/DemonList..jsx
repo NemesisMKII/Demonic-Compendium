@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ADD_DEMON_URL, DEMON_URL } from "../Constants/urls";
+import { ADD_DEMON_URL, DELETE_DEMON_URL, DEMON_URL } from "../Constants/urls";
 import DemonBox from "./utils/DemonBox";
 
 const DemonList = ({game, demonList}) => {
@@ -19,11 +19,14 @@ const DemonList = ({game, demonList}) => {
                     </Link>
                 ))}
             </div>
-            <div className="w-[95%] h-[10%] mt-4 m-auto flex justify-center items-center">
+            <div className="w-[95%] h-[10%] mt-4 m-auto flex justify-center items-center space-x-5">
                 <Link 
                     to={ADD_DEMON_URL.replace(":game", game.slug)} 
                 >
                     <h1 className="p-2 font-bold text-2xl border-2 rounded-md bg-green-700">Ajouter un démon</h1>
+                </Link>
+                <Link to={DELETE_DEMON_URL.replace(":game", game.slug)}>
+                    <h1 className="p-2 font-bold text-2xl border-2 rounded-md bg-red-600">Supprimer un démon</h1>
                 </Link>
             </div>
         </div>
